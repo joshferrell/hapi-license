@@ -7,7 +7,8 @@ Object {
     "url": "http://google.com",
   },
   "description": "Licesning api that connects to auth0 for license information",
-  "name": "Licensing Api",
+  "formattedName": "Licensing Api",
+  "name": "licensing-api",
   "version": "1.0.0",
 }
 `;

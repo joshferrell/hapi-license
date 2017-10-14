@@ -1,0 +1,189 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`server plugins plugin environments should create dev plugins 1`] = `
+Array [
+  Object {
+    "plugin": "inert",
+  },
+  Object {
+    "plugin": "vision",
+  },
+  Object {
+    "plugin": Object {
+      "options": Object {
+        "grouping": "tags",
+        "host": "localhost:3000",
+        "info": Object {
+          "contact": Object {
+            "name": "Josh Ferrell",
+            "url": "http://google.com",
+          },
+          "description": "Licesning api that connects to auth0 for license information",
+          "title": "undefined Documentation",
+          "verson": "1.0.0",
+        },
+        "schemes": Array [
+          "http",
+        ],
+        "securityDefinitions": Object {
+          "manageLicense": Object {
+            "in": "header",
+            "name": "Authorization",
+            "type": "apiKey",
+          },
+        },
+      },
+      "register": "hapi-swagger",
+    },
+  },
+]
+`;
+
+exports[`server plugins plugin environments should create local plugins 1`] = `
+Array [
+  Object {
+    "plugin": Object {
+      "options": Object {
+        "endpoint": "/tv",
+      },
+      "register": "tv",
+    },
+  },
+]
+`;
+
+exports[`server plugins plugin environments should create production plugins 1`] = `
+Array [
+  Object {
+    "plugin": "hapi-auth-jwt2",
+  },
+  Object {
+    "plugin": Object {
+      "options": Object {
+        "includes": Object {
+          "request": Array [
+            "headers",
+            "payload",
+          ],
+          "response": Array [
+            "payload",
+          ],
+        },
+        "ops": Object {
+          "interval": 2160000,
+        },
+        "reporters": Object {
+          "bunyan": Array [
+            Object {
+              "args": Array [],
+              "module": "good-squeeze",
+              "name": "Squeeze",
+            },
+            Object {
+              "args": Array [
+                Object {
+                  "Authorization": "censor",
+                },
+              ],
+              "module": "white-out",
+            },
+            Object {
+              "args": Array [
+                Object {
+                  "formatters": Object {
+                    "err": [Function],
+                  },
+                  "logger": "test",
+                },
+              ],
+              "module": "good-bunyan",
+            },
+          ],
+        },
+      },
+      "register": "good",
+    },
+  },
+]
+`;
+
+exports[`server plugins plugin options should create good options 1`] = `
+Object {
+  "includes": Object {
+    "request": Array [
+      "headers",
+      "payload",
+    ],
+    "response": Array [
+      "payload",
+    ],
+  },
+  "ops": Object {
+    "interval": 2160000,
+  },
+  "reporters": Object {
+    "bunyan": Array [
+      Object {
+        "args": Array [],
+        "module": "good-squeeze",
+        "name": "Squeeze",
+      },
+      Object {
+        "args": Array [
+          Object {
+            "Authorization": "censor",
+          },
+        ],
+        "module": "white-out",
+      },
+      Object {
+        "args": Array [
+          Object {
+            "formatters": Object {
+              "err": [Function],
+            },
+            "logger": "test",
+          },
+        ],
+        "module": "good-bunyan",
+      },
+    ],
+  },
+}
+`;
+
+exports[`server plugins plugin options should create swagger options 1`] = `
+Object {
+  "grouping": "tags",
+  "host": "localhost:3000",
+  "info": Object {
+    "contact": Object {
+      "name": "Josh Ferrell",
+      "url": "http://google.com",
+    },
+    "description": "Licesning api that connects to auth0 for license information",
+    "title": "undefined Documentation",
+    "verson": "1.0.0",
+  },
+  "schemes": Array [
+    "http",
+  ],
+  "securityDefinitions": Object {
+    "manageLicense": Object {
+      "in": "header",
+      "name": "Authorization",
+      "type": "apiKey",
+    },
+  },
+}
+`;
+
+exports[`server plugins should create a bunyan logger 1`] = `
+Object {
+  "level": "trace",
+  "name": "licensing-api",
+  "serialziers": Object {
+    "err": [Function],
+  },
+}
+`;

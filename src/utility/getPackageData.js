@@ -9,7 +9,8 @@ export const formatAppName = pipe(
 );
 
 export const packageData = {
-    name: formatAppName(module.exports.name),
+    name: module.exports.name,
+    formattedName: formatAppName(module.exports.name),
     version: module.exports.version,
     author: module.exports.author,
     description: module.exports.description
