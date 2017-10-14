@@ -13,7 +13,8 @@
     "test": "jest",
     "test:spec": "jest --testPathPattern=spec.js",
     "test:integration": "jest --testPathPattern=test.js",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "lint": "eslint ./src/**/*.js"
   },
   "dependencies": {
     "boom": "^6.0.0",
@@ -27,17 +28,28 @@
     "hapi-swagger": "^7.8.1",
     "inert": "^4.2.1",
     "joi": "^11.3.4",
+    "moment": "^2.19.1",
+    "pg": "^7.3.0",
+    "pg-hstore": "^2.3.2",
     "pkginfo": "^0.4.1",
     "ramda": "^0.25.0",
+    "sequelize": "^4.13.11",
     "tv": "^6.1.0",
     "vision": "^4.1.1",
     "white-out": "^2.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-3": "^6.24.1",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb": "^16.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^21.2.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
     "jest": "^21.2.1"
   }
 }

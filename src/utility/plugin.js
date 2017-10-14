@@ -10,8 +10,10 @@ export const createLogger = bunyan =>
         level: 'trace'
     });
 
-export const createGoodOptions = logger => {
-    const eventFilter = { request: '*', log: '*', response: '*', error: '*' };
+export const createGoodOptions = (logger) => {
+    const eventFilter = {
+        request: '*', log: '*', response: '*', error: '*'
+    };
 
     return {
         includes: {
@@ -99,7 +101,7 @@ export const createLocalPlugins = () => [
     }
 ];
 
-export const createProductionPlugins = logger => {
+export const createProductionPlugins = (logger) => {
     const goodOptions = createGoodOptions(logger);
 
     return [
@@ -110,5 +112,5 @@ export const createProductionPlugins = logger => {
                 options: goodOptions
             }
         }
-    ]
+    ];
 };
