@@ -3,12 +3,6 @@
 exports[`server plugins plugin environments should create dev plugins 1`] = `
 Array [
   Object {
-    "plugin": "inert",
-  },
-  Object {
-    "plugin": "vision",
-  },
-  Object {
     "plugin": Object {
       "options": Object {
         "grouping": "tags",
@@ -55,6 +49,12 @@ Array [
 exports[`server plugins plugin environments should create production plugins 1`] = `
 Array [
   Object {
+    "plugin": "inert",
+  },
+  Object {
+    "plugin": "vision",
+  },
+  Object {
     "plugin": "hapi-auth-jwt2",
   },
   Object {
@@ -75,7 +75,14 @@ Array [
         "reporters": Object {
           "bunyan": Array [
             Object {
-              "args": Array [],
+              "args": Array [
+                Object {
+                  "error": "*",
+                  "log": "*",
+                  "request": "*",
+                  "response": "*",
+                },
+              ],
               "module": "good-squeeze",
               "name": "Squeeze",
             },
@@ -89,6 +96,12 @@ Array [
             },
             Object {
               "args": Array [
+                Object {
+                  "error": "*",
+                  "log": "*",
+                  "request": "*",
+                  "response": "*",
+                },
                 Object {
                   "formatters": Object {
                     "err": [Function],
@@ -124,7 +137,14 @@ Object {
   "reporters": Object {
     "bunyan": Array [
       Object {
-        "args": Array [],
+        "args": Array [
+          Object {
+            "error": "*",
+            "log": "*",
+            "request": "*",
+            "response": "*",
+          },
+        ],
         "module": "good-squeeze",
         "name": "Squeeze",
       },
@@ -138,6 +158,12 @@ Object {
       },
       Object {
         "args": Array [
+          Object {
+            "error": "*",
+            "log": "*",
+            "request": "*",
+            "response": "*",
+          },
           Object {
             "formatters": Object {
               "err": [Function],

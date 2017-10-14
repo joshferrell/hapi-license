@@ -6,9 +6,9 @@ import {
 
 
 const createManifest = (environment, serverInfo, logger) => {
-    const localPlugins = environment === 'local' ? createLocalPlugins() : null;
-    const developmentPlugins = (environment === 'development' || environment === 'development') ? createDevPlugins(serverInfo) : null;
-    const productionPlugins = environment === 'production' ? createProductionPlugins(logger) : null;
+    const localPlugins = ['local', 'production', 'development'].includes(environment) ? createLocalPlugins() : [];
+    const developmentPlugins = ['production', 'development'].includes(environment) ? createDevPlugins(serverInfo) : [];
+    const productionPlugins = createProductionPlugins(logger);
 
     return ({
         connections: [
@@ -24,9 +24,9 @@ const createManifest = (environment, serverInfo, logger) => {
             }
         ],
         registrations: [
-            ...localPlugins,
+            ...productionPlugins,
             ...developmentPlugins,
-            ...productionPlugins
+            ...localPlugins
         ]
     });
 };

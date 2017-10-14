@@ -15,7 +15,7 @@ export const createGoodOptions = (logger) => {
         request: '*', log: '*', response: '*', error: '*'
     };
 
-    return {
+    return ({
         includes: {
             request: ['headers', 'payload'],
             response: ['payload']
@@ -28,7 +28,7 @@ export const createGoodOptions = (logger) => {
                 {
                     module: 'good-squeeze',
                     name: 'Squeeze',
-                    args: [...eventFilter]
+                    args: [eventFilter]
                 },
                 {
                     module: 'white-out',
@@ -39,7 +39,7 @@ export const createGoodOptions = (logger) => {
                 {
                     module: 'good-bunyan',
                     args: [
-                        ...eventFilter,
+                        eventFilter,
                         {
                             logger,
                             formatters: {
@@ -50,7 +50,7 @@ export const createGoodOptions = (logger) => {
                 }
             ]
         }
-    };
+    });
 };
 
 export const createSwaggerOptions = ({ host, scheme }) => ({
@@ -77,10 +77,7 @@ export const createSwaggerOptions = ({ host, scheme }) => ({
 // { host, schema }
 export const createDevPlugins = (serverInfo) => {
     const swaggerOptions = createSwaggerOptions(serverInfo);
-
     return [
-        { plugin: 'inert' },
-        { plugin: 'vision' },
         {
             plugin: {
                 register: 'hapi-swagger',
@@ -103,8 +100,9 @@ export const createLocalPlugins = () => [
 
 export const createProductionPlugins = (logger) => {
     const goodOptions = createGoodOptions(logger);
-
     return [
+        { plugin: 'inert' },
+        { plugin: 'vision' },
         { plugin: 'hapi-auth-jwt2' },
         {
             plugin: {
