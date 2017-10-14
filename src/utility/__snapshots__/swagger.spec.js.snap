@@ -3821,6 +3821,7 @@ Object {
                     "_description": null,
                     "_examples": Array [],
                     "_flags": Object {
+                      "allowOnly": true,
                       "presence": "required",
                     },
                     "_inner": Object {},
@@ -3838,7 +3839,9 @@ Object {
                     "_type": "string",
                     "_unit": null,
                     "_valids": Set {
-                      "_set": Array [],
+                      "_set": Array [
+                        "postgres",
+                      ],
                     },
                     "isJoi": true,
                   },
@@ -10295,6 +10298,7 @@ Object {
                     "_description": null,
                     "_examples": Array [],
                     "_flags": Object {
+                      "allowOnly": true,
                       "presence": "required",
                     },
                     "_inner": Object {},
@@ -10312,7 +10316,9 @@ Object {
                     "_type": "string",
                     "_unit": null,
                     "_valids": Set {
-                      "_set": Array [],
+                      "_set": Array [
+                        "postgres",
+                      ],
                     },
                     "isJoi": true,
                   },

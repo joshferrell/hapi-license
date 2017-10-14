@@ -73,7 +73,7 @@ export const checkDependency = {
             .array()
             .unique()
             .items(Joi.object({
-                name: Joi.string().required(),
+                name: Joi.string().valid(['postgres']).required(),
                 up: Joi.boolean().required(),
                 duration: Joi.number().required(),
                 msg: Joi.string().required()

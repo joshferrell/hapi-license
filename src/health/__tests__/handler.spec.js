@@ -28,7 +28,7 @@ describe('health check handler', () => {
 
         beforeEach(() => {
             connection = {
-                authentication: jest.fn(() => Promise.resolve())
+                authenticate: jest.fn(() => Promise.resolve())
             };
             logger = {
                 error: jest.fn()
@@ -48,7 +48,7 @@ describe('health check handler', () => {
 
         it('should log that the dependency is down if down', async () => {
             connection = {
-                authentication: jest.fn(() => Promise.reject())
+                authenticate: jest.fn(() => Promise.reject())
             };
 
             const dependencyHandler = createDependencyHandler(connection, logger);

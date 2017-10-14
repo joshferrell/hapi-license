@@ -1,8 +1,8 @@
 import { format } from '../utility';
 import { healthStatus, createDependencyHandler } from './health.handler';
 
-const createHealthStatus = () => {
-    const healthDependency = createDependencyHandler();
+const createHealthStatus = (connection, logger) => {
+    const healthDependency = createDependencyHandler(connection, logger);
 
     return ([
         {

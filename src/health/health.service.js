@@ -6,7 +6,7 @@ export const createCheckDatabase = (name, connection, log) => () => {
     const startTime = setTime();
 
     return connection
-        .authentication()
+        .authenticate()
         .then(() => {
             const duration = setTime(startTime);
             return {

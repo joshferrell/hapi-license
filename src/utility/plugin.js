@@ -55,10 +55,11 @@ export const createGoodOptions = (logger) => {
 
 export const createSwaggerOptions = ({ host, scheme }) => ({
     host,
+    swaggerUI: true,
     info: {
-        title: `${packageData.formatedName} Documentation`,
+        title: `${packageData.formattedName} Documentation`,
         description: packageData.description,
-        verson: packageData.version,
+        version: packageData.version,
         contact: {
             ...packageData.author
         }

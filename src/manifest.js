@@ -4,10 +4,9 @@ import {
     createProductionPlugins
 } from './utility';
 
-
 const createManifest = (environment, serverInfo, logger) => {
-    const localPlugins = ['local', 'production', 'development'].includes(environment) ? createLocalPlugins() : [];
-    const developmentPlugins = ['production', 'development'].includes(environment) ? createDevPlugins(serverInfo) : [];
+    const localPlugins = ['local'].includes(environment) ? createLocalPlugins() : [];
+    const developmentPlugins = ['development', 'local'].includes(environment) ? createDevPlugins(serverInfo) : [];
     const productionPlugins = createProductionPlugins(logger);
 
     return ({

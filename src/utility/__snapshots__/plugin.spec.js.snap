@@ -13,8 +13,8 @@ Array [
             "url": "http://google.com",
           },
           "description": "Licesning api that connects to auth0 for license information",
-          "title": "undefined Documentation",
-          "verson": "1.0.0",
+          "title": "Licensing Api Documentation",
+          "version": "1.0.0",
         },
         "schemes": Array [
           "http",
@@ -26,6 +26,7 @@ Array [
             "type": "apiKey",
           },
         },
+        "swaggerUI": true,
       },
       "register": "hapi-swagger",
     },
@@ -188,8 +189,8 @@ Object {
       "url": "http://google.com",
     },
     "description": "Licesning api that connects to auth0 for license information",
-    "title": "undefined Documentation",
-    "verson": "1.0.0",
+    "title": "Licensing Api Documentation",
+    "version": "1.0.0",
   },
   "schemes": Array [
     "http",
@@ -201,6 +202,7 @@ Object {
       "type": "apiKey",
     },
   },
+  "swaggerUI": true,
 }
 `;
 
