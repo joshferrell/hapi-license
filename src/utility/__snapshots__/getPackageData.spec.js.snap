@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`get package data should return package json information from the package file 1`] = `
+Object {
+  "author": Object {
+    "name": "Josh Ferrell",
+    "url": "http://google.com",
+  },
+  "description": "Licesning api that connects to auth0 for license information",
+  "name": "Licensing Api",
+  "version": "1.0.0",
+}
+`;
