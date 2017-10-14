@@ -4,7 +4,7 @@
   "main": "index.js",
   "author": {
     "name": "Josh Ferrell",
-    "url": "http://google.com"  
+    "url": "http://google.com"
   },
   "description": "Licesning api that connects to auth0 for license information",
   "license": "MIT",
@@ -26,6 +26,7 @@
     "hapi": "^16.6.2",
     "hapi-swagger": "^7.8.1",
     "inert": "^4.2.1",
+    "joi": "^11.3.4",
     "pkginfo": "^0.4.1",
     "ramda": "^0.25.0",
     "tv": "^6.1.0",

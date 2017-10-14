@@ -2187,7 +2187,7 @@ joi@11.0.2:
     items "2.x.x"
     topo "2.x.x"
 
-joi@^11.1.0:
+joi@^11.1.0, joi@^11.3.4:
   version "11.3.4"
   resolved "https://registry.yarnpkg.com/joi/-/joi-11.3.4.tgz#c25fc2598c3847865f92c51b5249b519af3e51cb"
   dependencies:
