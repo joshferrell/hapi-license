@@ -40,8 +40,7 @@ const createHealthStatus = (connection, logger) => {
                     'hapi-swagger': {
                         responses: {
                             ...format.checkDependency,
-                            ...format.internalError,
-                            ...format.notImplemented
+                            ...format.internalError
                         }
                     }
                 }

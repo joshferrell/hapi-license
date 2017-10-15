@@ -19,6 +19,7 @@
   "dependencies": {
     "boom": "^6.0.0",
     "bunyan": "^1.8.12",
+    "common-tags": "^1.4.0",
     "dotenv-safe": "^4.0.4",
     "glue": "^4.2.0",
     "good": "^7.3.0",
@@ -55,9 +56,8 @@
     "nodemon": "^1.12.1"
   },
   "jest": {
-      "collectCoverageFrom": [
-        "src/**.**.js"
-      ]
+    "collectCoverageFrom": [
+      "src/**.**.js"
+    ]
   }
-
 }
