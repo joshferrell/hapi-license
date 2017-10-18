@@ -1,0 +1,337 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`server manifest should create a server manifest for dev environment 1`] = `
+Object {
+  "connections": Array [
+    Object {
+      "labels": Array [
+        "server",
+      ],
+      "port": 3000,
+      "router": Object {
+        "stripTrailingSlash": true,
+      },
+      "routes": Object {
+        "cors": true,
+      },
+    },
+  ],
+  "registrations": Array [
+    Object {
+      "plugin": "inert",
+    },
+    Object {
+      "plugin": "vision",
+    },
+    Object {
+      "plugin": "hapi-auth-jwt2",
+    },
+    Object {
+      "plugin": Object {
+        "options": Object {
+          "includes": Object {
+            "request": Array [
+              "headers",
+              "payload",
+            ],
+            "response": Array [
+              "payload",
+            ],
+          },
+          "ops": Object {
+            "interval": 2160000,
+          },
+          "reporters": Object {
+            "bunyan": Array [
+              Object {
+                "args": Array [
+                  Object {
+                    "error": "*",
+                    "log": "*",
+                    "request": "*",
+                    "response": "*",
+                  },
+                ],
+                "module": "good-squeeze",
+                "name": "Squeeze",
+              },
+              Object {
+                "args": Array [
+                  Object {
+                    "Authorization": "censor",
+                  },
+                ],
+                "module": "white-out",
+              },
+              Object {
+                "args": Array [
+                  Object {
+                    "error": "*",
+                    "log": "*",
+                    "request": "*",
+                    "response": "*",
+                  },
+                  Object {
+                    "formatters": Object {
+                      "err": [Function],
+                    },
+                    "logger": "test",
+                  },
+                ],
+                "module": "good-bunyan",
+              },
+            ],
+          },
+        },
+        "register": "good",
+      },
+    },
+    Object {
+      "plugin": Object {
+        "options": Object {
+          "grouping": "tags",
+          "host": "localhost",
+          "info": Object {
+            "contact": Object {
+              "name": "Josh Ferrell",
+              "url": "http://google.com",
+            },
+            "description": "Licesning api that connects to auth0 for license information",
+            "title": "Licensing Api Documentation",
+            "version": "1.0.0",
+          },
+          "schemes": Array [
+            "http",
+          ],
+          "securityDefinitions": Object {
+            "manageLicense": Object {
+              "in": "header",
+              "name": "Authorization",
+              "type": "apiKey",
+            },
+          },
+          "swaggerUI": true,
+        },
+        "register": "hapi-swagger",
+      },
+    },
+  ],
+}
+`;
+
+exports[`server manifest should create a server manifest for local environments 1`] = `
+Object {
+  "connections": Array [
+    Object {
+      "labels": Array [
+        "server",
+      ],
+      "port": 3000,
+      "router": Object {
+        "stripTrailingSlash": true,
+      },
+      "routes": Object {
+        "cors": true,
+      },
+    },
+  ],
+  "registrations": Array [
+    Object {
+      "plugin": "inert",
+    },
+    Object {
+      "plugin": "vision",
+    },
+    Object {
+      "plugin": "hapi-auth-jwt2",
+    },
+    Object {
+      "plugin": Object {
+        "options": Object {
+          "includes": Object {
+            "request": Array [
+              "headers",
+              "payload",
+            ],
+            "response": Array [
+              "payload",
+            ],
+          },
+          "ops": Object {
+            "interval": 2160000,
+          },
+          "reporters": Object {
+            "bunyan": Array [
+              Object {
+                "args": Array [
+                  Object {
+                    "error": "*",
+                    "log": "*",
+                    "request": "*",
+                    "response": "*",
+                  },
+                ],
+                "module": "good-squeeze",
+                "name": "Squeeze",
+              },
+              Object {
+                "args": Array [
+                  Object {
+                    "Authorization": "censor",
+                  },
+                ],
+                "module": "white-out",
+              },
+              Object {
+                "args": Array [
+                  Object {
+                    "error": "*",
+                    "log": "*",
+                    "request": "*",
+                    "response": "*",
+                  },
+                  Object {
+                    "formatters": Object {
+                      "err": [Function],
+                    },
+                    "logger": "test",
+                  },
+                ],
+                "module": "good-bunyan",
+              },
+            ],
+          },
+        },
+        "register": "good",
+      },
+    },
+    Object {
+      "plugin": Object {
+        "options": Object {
+          "grouping": "tags",
+          "host": "localhost",
+          "info": Object {
+            "contact": Object {
+              "name": "Josh Ferrell",
+              "url": "http://google.com",
+            },
+            "description": "Licesning api that connects to auth0 for license information",
+            "title": "Licensing Api Documentation",
+            "version": "1.0.0",
+          },
+          "schemes": Array [
+            "http",
+          ],
+          "securityDefinitions": Object {
+            "manageLicense": Object {
+              "in": "header",
+              "name": "Authorization",
+              "type": "apiKey",
+            },
+          },
+          "swaggerUI": true,
+        },
+        "register": "hapi-swagger",
+      },
+    },
+    Object {
+      "plugin": Object {
+        "options": Object {
+          "endpoint": "/tv",
+        },
+        "register": "tv",
+      },
+    },
+  ],
+}
+`;
+
+exports[`server manifest should create a server manifest for production 1`] = `
+Object {
+  "connections": Array [
+    Object {
+      "labels": Array [
+        "server",
+      ],
+      "port": 3000,
+      "router": Object {
+        "stripTrailingSlash": true,
+      },
+      "routes": Object {
+        "cors": true,
+      },
+    },
+  ],
+  "registrations": Array [
+    Object {
+      "plugin": "inert",
+    },
+    Object {
+      "plugin": "vision",
+    },
+    Object {
+      "plugin": "hapi-auth-jwt2",
+    },
+    Object {
+      "plugin": Object {
+        "options": Object {
+          "includes": Object {
+            "request": Array [
+              "headers",
+              "payload",
+            ],
+            "response": Array [
+              "payload",
+            ],
+          },
+          "ops": Object {
+            "interval": 2160000,
+          },
+          "reporters": Object {
+            "bunyan": Array [
+              Object {
+                "args": Array [
+                  Object {
+                    "error": "*",
+                    "log": "*",
+                    "request": "*",
+                    "response": "*",
+                  },
+                ],
+                "module": "good-squeeze",
+                "name": "Squeeze",
+              },
+              Object {
+                "args": Array [
+                  Object {
+                    "Authorization": "censor",
+                  },
+                ],
+                "module": "white-out",
+              },
+              Object {
+                "args": Array [
+                  Object {
+                    "error": "*",
+                    "log": "*",
+                    "request": "*",
+                    "response": "*",
+                  },
+                  Object {
+                    "formatters": Object {
+                      "err": [Function],
+                    },
+                    "logger": "test",
+                  },
+                ],
+                "module": "good-bunyan",
+              },
+            ],
+          },
+        },
+        "register": "good",
+      },
+    },
+  ],
+}
+`;

@@ -1,6 +1,6 @@
 import { pipe, map } from 'ramda';
 import boom from 'boom';
-import { mapUrl } from './license.service';
+import { mapUrl, createLicenseIssuer } from './license.service';
 
 export const createFetchLicenses = LicenseModel => (request, reply) => {
     const accountId = '1234';
@@ -23,10 +23,14 @@ export const createFetchLicenses = LicenseModel => (request, reply) => {
 };
 
 export const createNewLicense = LicenseModel => (request, reply) => {
-    const { productId, macAddress } = request.payload;
+    const issueLicense = createLicenseIssuer();
+    const { productId, validUntil, computer } = request.payload;
     const accountId = '1234';
-    return LicenseModel
-        .create({ accountId, productId, macAddress })
+
+    return issueLicense({ ...request.payload, accountId })
+        .then(license => LicenseModel.create({
+            productId, validUntil, ...computer, license, accountId
+        }))
         .then(_ => _.get({ plain: true }))
         .then(pipe(
             mapUrl,
@@ -76,5 +80,58 @@ export const createFetchLicense = LicenseModel => (request, reply) => {
                 msg: 'fetch inidividual license'
             });
             return reply(boom.badImplementation());
+        });
+};
+
+export const createUpdateLicense = LicenseModel => (request, reply) => {
+    const { id } = request.params;
+    const { validUntil, productId } = request.payload;
+    const accountId = '1234';
+    const issueLicense = createLicenseIssuer();
+
+    return LicenseModel
+        .findOne({ where: { accountId, id }, raw: true })
+        .then((model) => {
+            if (!model) return Promise.reject(Error('license does not exist'));
+
+            const {
+                computerId,
+                computerUsername,
+                computerOS,
+                computerName
+            } = model;
+
+            const license = issueLicense({
+                accountId,
+                validUntil: validUntil || model.validUntil,
+                productId: productId || model.productId,
+                computer: {
+                    computerId,
+                    computerUsername,
+                    computerOS,
+                    computerName
+                }
+            });
+
+            return model.update({
+                validUntil: validUntil || model.validUntil,
+                productId: productId || model.productId,
+                license
+            });
+        })
+        .then(model => model.get({ plain: true }))
+        .then(reply)
+        .catch((err) => {
+            switch (err.message) {
+            case 'license does not exist':
+                request.log('debug', `requested license ${id} does not exist for user ${accountId}`);
+                return reply(boom.badRequest());
+            default:
+                request.log('error', {
+                    err,
+                    msg: 'fetch inidividual license'
+                });
+                return reply(boom.badImplementation());
+            }
         });
 };

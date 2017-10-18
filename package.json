@@ -13,6 +13,7 @@
     "test": "jest",
     "test:spec": "jest --testPathPattern=spec.js",
     "test:integration": "jest --testPathPattern=test.js",
+    "test:ci": "jest --coverage --testPathPattern=spec.js && cat ./coverage/lcov.info | coveralls",
     "coverage": "jest --coverage",
     "lint": "eslint ./src/**/*.js"
   },
@@ -30,12 +31,14 @@
     "hapi-swagger": "^7.8.1",
     "inert": "^4.2.1",
     "joi": "^11.3.4",
+    "jsonwebtoken": "^8.1.0",
     "moment": "^2.19.1",
     "pg": "^7.3.0",
     "pg-hstore": "^2.3.2",
     "pkginfo": "^0.4.1",
     "ramda": "^0.25.0",
     "sequelize": "^4.13.11",
+    "sqlite": "^2.8.0",
     "tv": "^6.1.0",
     "vision": "^4.1.1",
     "white-out": "^2.0.0"
@@ -57,7 +60,8 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**.**.js"
+      "src/**/**.js",
+      "!src/**/index.js"
     ]
   }
 }

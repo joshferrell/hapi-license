@@ -1,6 +1,29 @@
 import joi from 'joi';
 
-const licenseFormat = joi.object({
+export const computerFormat = {
+    computerId: joi
+        .string()
+        .required()
+        .description('unique identify for machine based off of computer UUID'),
+    computerUsername: joi
+        .string()
+        .required()
+        .description('username for computer that app is in use for')
+        .example('Paul'),
+    computerOS: joi
+        .string()
+        .valid(['Windows', 'MacOS', 'Linux'])
+        .required()
+        .description('operating system that machine is using')
+        .example('MacOS'),
+    computerName: joi
+        .string()
+        .required()
+        .description('name that user has defined for their computer')
+        .example('Paul\'s Macbook Pro')
+};
+
+export const licenseFormat = joi.object({
     id: joi.string().uuid(['uuidv4']).required()
         .description('license id')
         .example('1dfc0c66-bcc0-4c02-aa0a-f633766f2dc5'),
@@ -10,15 +33,10 @@ const licenseFormat = joi.object({
     productId: joi.string().required()
         .description('product id')
         .example('1bccad9a-10e5-41bb-9032-5f3a0e47ce9f'),
-    lastPaidDate: joi.date().required()
-        .description('last date that payment was made')
-        .example('2017-01-01'),
-    macAddress: joi.string().required()
-        .description('computer mac address of license')
-        .example('00:3e:e1:c4:5d:df'),
-    cpuIdentity: joi.string().required()
-        .description('computer cpu id of license id')
-        .example('1234'),
+    validUntil: joi.date().min('now').required()
+        .description('date that license expires')
+        .example('2999-01-01'),
+    ...computerFormat,
     license: joi.string().required()
         .description('user license text to be imported into application'),
     createdAt: joi.date().required()
@@ -31,5 +49,3 @@ const licenseFormat = joi.object({
         .description('url that license is accessible')
         .example('http://localhost:3000/license/1dfc0c66-bcc0-4c02-aa0a-f633766f2dc5')
 });
-
-export default licenseFormat;

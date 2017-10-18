@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`create local connection should create a sequelize connection 1`] = `
+Array [
+  "db_test",
+  "db_user",
+  "db_password",
+  Object {
+    "dialect": "postgres",
+    "host": "db_localhost",
+    "logger": [Function],
+    "operatorsAliases": undefined,
+  },
+]
+`;

@@ -11,6 +11,8 @@ const createValidateRoutes = () => {
             path: '/validate',
             handler: notImplemented,
             config: {
+                // TODO create authentication strategy for license account Id
+                // matches authorization account id
                 validate: {
                     payload: {
                         license: joi.string().required()

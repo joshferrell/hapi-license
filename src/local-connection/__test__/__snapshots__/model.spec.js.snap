@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`local connection models should create a license model 1`] = `
+Object {
+  "accountId": Object {
+    "allowNull": false,
+    "type": [Function],
+    "validate": Object {
+      "notEmpty": true,
+    },
+  },
+  "computerId": Object {
+    "allowNull": false,
+    "type": [Function],
+    "validate": Object {
+      "notEmpty": true,
+    },
+  },
+  "computerName": Object {
+    "allowNull": false,
+    "type": [Function],
+    "validate": Object {
+      "notEmpty": true,
+    },
+  },
+  "computerOS": Object {
+    "allowNull": false,
+    "type": [Function],
+    "validate": Object {
+      "isIn": Array [
+        Array [
+          "Windows",
+          "MacOS",
+          "Linux",
+        ],
+      ],
+    },
+  },
+  "computerUsername": Object {
+    "allowNull": false,
+    "type": [Function],
+    "validate": Object {
+      "notEmpty": true,
+    },
+  },
+  "id": Object {
+    "defaultValue": UUIDV4 {},
+    "primaryKey": true,
+    "type": [Function],
+  },
+  "license": Object {
+    "allowNull": false,
+    "type": [Function],
+  },
+  "productId": Object {
+    "allowNull": false,
+    "type": [Function],
+    "validate": Object {
+      "notEmpty": true,
+    },
+  },
+  "validUntil": Object {
+    "allowNull": false,
+    "type": [Function],
+  },
+}
+`;

@@ -1,4 +1,9 @@
 import { oneLineTrim } from 'common-tags';
+import moment from 'moment';
+import { promisify } from 'util';
+import jwt from 'jsonwebtoken';
+
+const sign = promisify(jwt.sign);
 
 /* eslint-disable import/prefer-default-export */
 export const mapUrl = license => Object.assign({}, license, {
@@ -7,3 +12,19 @@ export const mapUrl = license => Object.assign({}, license, {
         ${process.env.SERVER_URL}/license/${license.id}
     `
 });
+
+export const createLicenseIssuer = () => ({
+    accountId,
+    validUntil,
+    computer,
+    productId
+}) => sign(
+    {
+        accountId,
+        computer,
+        productId,
+        exp: Number.parseInt(moment(validUntil).format('x'), 10)
+    },
+    'shhh',
+    { algorithm: 'HS256' }
+);
