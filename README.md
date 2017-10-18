@@ -28,7 +28,6 @@ The server will reload if you make edits.
 
 [View Server Documentation](http://localhost:3000/documentation)<br />
 [View Interactive Server Logs](http://localhost:3000/tv)<br />
-[View Email Templates](http://localhost:3000/templates)
 
 ### `yarn test:spec --watchAll`
 Runs the test watcher in an interactive mode.
