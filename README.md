@@ -1,5 +1,7 @@
 # ![Hapi License](https://i.imgur.com/6drEN2O.png) Hapi License
 
+[![Join the chat at https://gitter.im/hapi-license/Lobby](https://badges.gitter.im/hapi-license/Lobby.svg)](https://gitter.im/hapi-license/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A licensing api that uses auth0 authentication. Give the licensing server machine information and the server will create a license for the user.
 
 ## Getting Started
