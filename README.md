@@ -2,6 +2,8 @@
 
 [![Join the chat at https://gitter.im/hapi-license/Lobby](https://badges.gitter.im/hapi-license/Lobby.svg)](https://gitter.im/hapi-license/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/joshferrell/hapi-license.svg?branch=master)](https://travis-ci.org/joshferrell/hapi-license)
+[![Coverage Status](https://coveralls.io/repos/github/joshferrell/hapi-license/badge.svg?branch=master)](https://coveralls.io/github/joshferrell/hapi-license?branch=master)
+[![bitHound Dependencies](https://www.bithound.io/github/joshferrell/hapi-license/badges/dependencies.svg)](https://www.bithound.io/github/joshferrell/hapi-license/master/dependencies/npm)
 
 A licensing api that uses auth0 authentication. Give the licensing server machine information and the server will create a license for the user.
 
