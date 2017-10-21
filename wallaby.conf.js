@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 module.exports = function (wallaby) {
     console.log(wallaby);
     return {
