@@ -2,13 +2,6 @@
 
 exports[`local connection models should create a license model 1`] = `
 Object {
-  "accountId": Object {
-    "allowNull": false,
-    "type": [Function],
-    "validate": Object {
-      "notEmpty": true,
-    },
-  },
   "computerId": Object {
     "allowNull": false,
     "type": [Function],
@@ -40,6 +33,14 @@ Object {
     "allowNull": false,
     "type": [Function],
     "validate": Object {
+      "notEmpty": true,
+    },
+  },
+  "email": Object {
+    "allowNull": false,
+    "type": [Function],
+    "validate": Object {
+      "isEmail": true,
       "notEmpty": true,
     },
   },

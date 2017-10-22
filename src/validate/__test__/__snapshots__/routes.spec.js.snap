@@ -4,6 +4,7 @@ exports[`license routes should create license routes 1`] = `
 Array [
   Object {
     "config": Object {
+      "auth": false,
       "description": "Validate that a license is valid by id",
       "notes": Array [
         "Validates that a license is valid or active",
@@ -25801,7 +25802,7 @@ Array [
               "validate": [Function],
               "version": "13.0.1",
             },
-            "_description": "computer unique identifier",
+            "_description": "Current computers identifier",
             "_examples": Array [],
             "_flags": Object {
               "presence": "required",

@@ -11,14 +11,13 @@ const createValidateRoutes = (LicenseModel, secret) => {
             path: '/validate',
             handler: validateLicense,
             config: {
-                // TODO create authentication strategy for license account Id
-                // matches authorization account id
+                auth: false,
                 validate: {
                     payload: {
                         license: joi.string().required()
                             .description('A token to validate'),
                         computerId: joi.string().required()
-                            .description('computer unique identifier')
+                            .description('Current computers identifier')
                     }
                 },
                 tags: ['api', 'License Validation'],

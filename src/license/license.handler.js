@@ -3,14 +3,22 @@ import boom from 'boom';
 import { mapUrl, createLicenseIssuer } from './license.service';
 
 export const createFetchLicenses = LicenseModel => (request, reply) => {
-    const accountId = '1234';
+    const {
+        email,
+        app_metadata: {
+            licenseCount,
+            licenseTotal
+        }
+    } = request.auth.credentials;
+
     return LicenseModel
         .findAll({
-            where: { accountId },
+            where: { email },
             raw: true
         })
         .then(pipe(
             map(mapUrl),
+            licenses => ({ meta: { licenseCount, licenseTotal }, licenses }),
             reply
         ))
         .catch((err) => {
@@ -25,15 +33,26 @@ export const createFetchLicenses = LicenseModel => (request, reply) => {
 export const createNewLicense = LicenseModel => (request, reply) => {
     const issueLicense = createLicenseIssuer();
     const { productId, validUntil, computer } = request.payload;
-    const accountId = '1234';
+    const {
+        email,
+        app_metadata: {
+            licenseCount,
+            licenseTotal
+        }
+    } = request.auth.credentials;
 
-    return issueLicense({ ...request.payload, accountId })
+    if (licenseCount >= licenseTotal) {
+        return reply(boom.unauthorized('request exceeds available license amount'));
+    }
+
+    return issueLicense({ ...request.payload, email })
         .then(license => LicenseModel.create({
-            productId, validUntil, ...computer, license, accountId
+            productId, validUntil, ...computer, license, email
         }))
         .then(_ => _.get({ plain: true }))
         .then(pipe(
             mapUrl,
+            license => ({ meta: { licenseCount, licenseTotal }, license }),
             reply
         ))
         .catch((err) => {
@@ -47,10 +66,11 @@ export const createNewLicense = LicenseModel => (request, reply) => {
 
 export const createDeleteLicense = LicenseModel => (request, reply) => {
     const { id } = request.params;
-    const accountId = '1234';
+    const { email } = request.auth.credentials;
+
     return LicenseModel
         .destroy({
-            where: { id, accountId }
+            where: { id, email }
         })
         .then(() => reply({ success: true }))
         .catch((err) => {
@@ -64,14 +84,22 @@ export const createDeleteLicense = LicenseModel => (request, reply) => {
 
 export const createFetchLicense = LicenseModel => (request, reply) => {
     const { id } = request.params;
-    const accountId = '1234';
+    const {
+        email,
+        app_metadata: {
+            licenseCount,
+            licenseTotal
+        }
+    } = request.auth.credentials;
+
     return LicenseModel
         .find({
-            where: { accountId, id },
+            where: { email, id },
             raw: true
         })
         .then(pipe(
             mapUrl,
+            license => ({ meta: { licenseCount, licenseTotal }, license }),
             reply
         ))
         .catch((err) => {
@@ -86,11 +114,17 @@ export const createFetchLicense = LicenseModel => (request, reply) => {
 export const createUpdateLicense = LicenseModel => (request, reply) => {
     const { id } = request.params;
     const { validUntil, productId } = request.payload;
-    const accountId = '1234';
+    const {
+        email,
+        app_metadata: {
+            licenseCount,
+            licenseTotal
+        }
+    } = request.auth.credentials;
     const issueLicense = createLicenseIssuer();
 
     return LicenseModel
-        .findOne({ where: { accountId, id }, raw: true })
+        .findOne({ where: { email, id }, raw: true })
         .then((model) => {
             if (!model) return Promise.reject(Error('license does not exist'));
 
@@ -102,7 +136,7 @@ export const createUpdateLicense = LicenseModel => (request, reply) => {
             } = model;
 
             const license = issueLicense({
-                accountId,
+                email,
                 validUntil: validUntil || model.validUntil,
                 productId: productId || model.productId,
                 computer: {
@@ -120,11 +154,16 @@ export const createUpdateLicense = LicenseModel => (request, reply) => {
             });
         })
         .then(model => model.get({ plain: true }))
-        .then(reply)
+        .then(license => reply({
+            meta: {
+                licenseCount, licenseTotal
+            },
+            license
+        }))
         .catch((err) => {
             switch (err.message) {
             case 'license does not exist':
-                request.log('debug', `requested license ${id} does not exist for user ${accountId}`);
+                request.log('debug', `requested license ${id} does not exist for user ${email}`);
                 return reply(boom.badRequest());
             default:
                 request.log('error', {
