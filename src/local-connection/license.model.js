@@ -6,11 +6,12 @@ const createLicenseModel = connection => connection.define('license', {
         primaryKey: true,
         defaultValue: Sequelize.UUIDV4()
     },
-    accountId: {
+    email: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
-            notEmpty: true
+            notEmpty: true,
+            isEmail: true
         }
     },
     productId: {

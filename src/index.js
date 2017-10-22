@@ -2,8 +2,10 @@ import glue from 'glue';
 import bunyan from 'bunyan';
 import dotenv from 'dotenv-safe';
 import Sequelize from 'sequelize';
+import { hapiJwt2Key } from 'jwks-rsa';
 import createManifest from './manifest';
 import { createLogger } from './utility';
+import createStrategy from './auth';
 import {
     createLocalConnection,
     createLicenseModel
@@ -31,6 +33,7 @@ const licenseRoutes = createLicenseRoutes(LicenseModel);
 const validationRoutes = createValidateRoutes(LicenseModel);
 
 const startServer = (server) => {
+    createStrategy(server, hapiJwt2Key);
     server.route(healthRoutes);
     server.route(licenseRoutes);
     server.route(validationRoutes);

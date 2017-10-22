@@ -88,3 +88,8 @@ Machine name for the user to know which computer the license is issued for.
 import os from 'os';
 const computerName = os.hostname();
 ```
+
+## TODO
+Create documentation about:
+* authentication token structure
+* manipulating license count in auth0
