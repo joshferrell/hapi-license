@@ -22,6 +22,9 @@ const createLicenseRoutes = (LicenseModel) => {
             path: '/license',
             handler: newLicense,
             config: {
+                auth: {
+                    scope: 'write:license'
+                },
                 validate: {
                     payload: {
                         productId: joi.string().required()
@@ -59,6 +62,9 @@ const createLicenseRoutes = (LicenseModel) => {
             path: '/license',
             handler: fetchLicenses,
             config: {
+                auth: {
+                    scope: 'read:license'
+                },
                 tags: ['api', 'License Management'],
                 description: 'Get all active licenses for a user',
                 notes: [
@@ -85,6 +91,9 @@ const createLicenseRoutes = (LicenseModel) => {
             path: '/license/{id}',
             handler: fetchLicense,
             config: {
+                auth: {
+                    scope: 'read:license'
+                },
                 validate: {
                     params: {
                         id: joi.string().uuid(['uuidv4']).required()
@@ -118,6 +127,9 @@ const createLicenseRoutes = (LicenseModel) => {
             path: '/license/{id}',
             handler: deleteLicense,
             config: {
+                auth: {
+                    scope: 'write:license'
+                },
                 validate: {
                     params: {
                         id: joi.string().uuid(['uuidv4']).required()
@@ -148,6 +160,9 @@ const createLicenseRoutes = (LicenseModel) => {
             path: '/license/{id}',
             handler: updateLicense,
             config: {
+                auth: {
+                    scope: 'write:license'
+                },
                 validate: {
                     params: {
                         id: joi.string().uuid(['uuidv4']).required()
