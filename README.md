@@ -1,5 +1,7 @@
 # ![Hapi License](https://i.imgur.com/6drEN2O.png) Hapi License
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/joshferrell/hapi-license.svg)](https://greenkeeper.io/)
+
 [![Join the chat at https://gitter.im/hapi-license/Lobby](https://badges.gitter.im/hapi-license/Lobby.svg)](https://gitter.im/hapi-license/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/joshferrell/hapi-license.svg?branch=master)](https://travis-ci.org/joshferrell/hapi-license)
 [![Coverage Status](https://coveralls.io/repos/github/joshferrell/hapi-license/badge.svg?branch=master)](https://coveralls.io/github/joshferrell/hapi-license?branch=master)
