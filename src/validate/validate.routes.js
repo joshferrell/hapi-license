@@ -1,15 +1,15 @@
-import boom from 'boom';
 import joi from 'joi';
 import { format } from '../utility';
+import { createValidateLicense } from './validate.handler';
 
-const createValidateRoutes = () => {
-    const notImplemented = (request, reply) => reply(boom.notImplemented());
+const createValidateRoutes = (LicenseModel, secret) => {
+    const validateLicense = createValidateLicense(LicenseModel, secret);
 
     return [
         {
             method: 'POST',
             path: '/validate',
-            handler: notImplemented,
+            handler: validateLicense,
             config: {
                 auth: false,
                 validate: {
@@ -31,8 +31,7 @@ const createValidateRoutes = () => {
                             ...format.success,
                             ...format.badRequest,
                             ...format.unauthorized,
-                            ...format.internalError,
-                            ...format.notImplemented
+                            ...format.internalError
                         }
                     }
                 }

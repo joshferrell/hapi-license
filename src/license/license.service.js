@@ -5,7 +5,6 @@ import jwt from 'jsonwebtoken';
 
 const sign = promisify(jwt.sign);
 
-/* eslint-disable import/prefer-default-export */
 export const mapUrl = license => Object.assign({}, license, {
     url: oneLineTrim`
         ${process.env.SERVER_SCHEME}://

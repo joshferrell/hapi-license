@@ -50,8 +50,7 @@ const createLicenseRoutes = (LicenseModel) => {
                             },
                             ...format.badRequest,
                             ...format.unauthorized,
-                            ...format.internalError,
-                            ...format.notImplemented
+                            ...format.internalError
                         }
                     }
                 }
@@ -79,8 +78,7 @@ const createLicenseRoutes = (LicenseModel) => {
                             },
                             ...format.badRequest,
                             ...format.unauthorized,
-                            ...format.internalError,
-                            ...format.notImplemented
+                            ...format.internalError
                         }
                     }
                 }
@@ -115,8 +113,7 @@ const createLicenseRoutes = (LicenseModel) => {
                             },
                             ...format.badRequest,
                             ...format.unauthorized,
-                            ...format.internalError,
-                            ...format.notImplemented
+                            ...format.internalError
                         }
                     }
                 }
@@ -148,8 +145,7 @@ const createLicenseRoutes = (LicenseModel) => {
                             ...format.success,
                             ...format.badRequest,
                             ...format.unauthorized,
-                            ...format.internalError,
-                            ...format.notImplemented
+                            ...format.internalError
                         }
                     }
                 }
@@ -193,8 +189,7 @@ const createLicenseRoutes = (LicenseModel) => {
                             },
                             ...format.badRequest,
                             ...format.unauthorized,
-                            ...format.internalError,
-                            ...format.notImplemented
+                            ...format.internalError
                         }
                     }
                 }
