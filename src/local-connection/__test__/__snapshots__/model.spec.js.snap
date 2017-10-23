@@ -44,6 +44,10 @@ Object {
       "notEmpty": true,
     },
   },
+  "expiresAt": Object {
+    "allowNull": false,
+    "type": [Function],
+  },
   "id": Object {
     "defaultValue": UUIDV4 {},
     "primaryKey": true,
@@ -59,10 +63,6 @@ Object {
     "validate": Object {
       "notEmpty": true,
     },
-  },
-  "validUntil": Object {
-    "allowNull": false,
-    "type": [Function],
   },
 }
 `;

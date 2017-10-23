@@ -32,7 +32,7 @@ export const createFetchLicenses = LicenseModel => (request, reply) => {
 
 export const createNewLicense = LicenseModel => (request, reply) => {
     const issueLicense = createLicenseIssuer();
-    const { productId, validUntil, computer } = request.payload;
+    const { productId, expiresAt, computer } = request.payload;
     const {
         email,
         app_metadata: {
@@ -47,7 +47,7 @@ export const createNewLicense = LicenseModel => (request, reply) => {
 
     return issueLicense({ ...request.payload, email })
         .then(license => LicenseModel.create({
-            productId, validUntil, ...computer, license, email
+            productId, expiresAt, ...computer, license, email
         }))
         .then(_ => _.get({ plain: true }))
         .then(pipe(
@@ -113,7 +113,7 @@ export const createFetchLicense = LicenseModel => (request, reply) => {
 
 export const createUpdateLicense = LicenseModel => (request, reply) => {
     const { id } = request.params;
-    const { validUntil, productId } = request.payload;
+    const { expiresAt, productId } = request.payload;
     const {
         email,
         app_metadata: {
@@ -137,7 +137,7 @@ export const createUpdateLicense = LicenseModel => (request, reply) => {
 
             const license = issueLicense({
                 email,
-                validUntil: validUntil || model.validUntil,
+                expiresAt: expiresAt || model.expiresAt,
                 productId: productId || model.productId,
                 computer: {
                     computerId,
@@ -148,7 +148,7 @@ export const createUpdateLicense = LicenseModel => (request, reply) => {
             });
 
             return model.update({
-                validUntil: validUntil || model.validUntil,
+                expiresAt: expiresAt || model.expiresAt,
                 productId: productId || model.productId,
                 license
             });

@@ -29,7 +29,7 @@ describe('license services', () => {
         const issueLicense = createLicenseIssuer();
         const data = {
             accountId: '1234',
-            validUntil: '2099-01-01',
+            expiresAt: '2099-01-01',
             computer: 'Paul\'s Macbook',
             productId: 'awesome product!'
         };

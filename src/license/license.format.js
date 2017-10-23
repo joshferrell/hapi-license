@@ -33,7 +33,7 @@ export const licenseFormat = joi.object({
     productId: joi.string().required()
         .description('product id')
         .example('1bccad9a-10e5-41bb-9032-5f3a0e47ce9f'),
-    validUntil: joi.date().min('now').required()
+    expiresAt: joi.date().min('now').required()
         .description('date that license expires')
         .example('2999-01-01'),
     ...computerFormat,

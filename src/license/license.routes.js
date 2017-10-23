@@ -30,7 +30,7 @@ const createLicenseRoutes = (LicenseModel) => {
                         productId: joi.string().required()
                             .description('product id associated with license')
                             .example('1bccad9a-10e5-41bb-9032-5f3a0e47ce9f'),
-                        validUntil: joi.date().min('now').required()
+                        expiresAt: joi.date().min('now').required()
                             .description('date that the license expires')
                             .example('2999-01-01'),
                         computer: computerFormat
@@ -166,13 +166,13 @@ const createLicenseRoutes = (LicenseModel) => {
                             .example('1e589ff5-b19a-4642-a5b2-8db48c0aa1c4')
                     },
                     payload: joi.object({
-                        validUntil: joi.date().min('now')
+                        expiresAt: joi.date().min('now')
                             .description('date that license expires')
                             .example('2099-01-01'),
                         productId: joi.string()
                             .description('product that user has purchased used')
                             .example('1234')
-                    }).or('validUntil', 'productId').required()
+                    }).or('expiresAt', 'productId').required()
                 },
                 tags: ['api', 'License Management'],
                 description: 'Update license expiration',

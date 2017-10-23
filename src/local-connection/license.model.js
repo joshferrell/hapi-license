@@ -49,7 +49,7 @@ const createLicenseModel = connection => connection.define('license', {
             notEmpty: true
         }
     },
-    validUntil: {
+    expiresAt: {
         type: Sequelize.DATE,
         allowNull: false
     },

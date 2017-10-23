@@ -14,7 +14,7 @@ export const mapUrl = license => Object.assign({}, license, {
 
 export const createLicenseIssuer = () => ({
     accountId,
-    validUntil,
+    expiresAt,
     computer,
     productId
 }) => sign(
@@ -22,7 +22,7 @@ export const createLicenseIssuer = () => ({
         accountId,
         computer,
         productId,
-        exp: Number.parseInt(moment(validUntil).format('x'), 10)
+        exp: Number.parseInt(moment(expiresAt).format('x'), 10)
     },
     'shhh',
     { algorithm: 'HS256' }
