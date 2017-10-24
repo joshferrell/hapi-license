@@ -109,13 +109,17 @@ export const createFetchLicense = LicenseModel => (request, reply) => {
             where: { email, id },
             raw: true
         })
-        .then(pipe(
-            mapUrl,
-            license => ({
-                meta: { licenseCount, licenseTotal },
-                license
-            }),
-            reply
+        .then(license => (
+            license ?
+                pipe(
+                    mapUrl,
+                    x => ({
+                        meta: { licenseCount, licenseTotal },
+                        license: x
+                    }),
+                    reply
+                )(license) :
+                reply(boom.notFound())
         ))
         .catch((err) => {
             request.log('error', {

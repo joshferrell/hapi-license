@@ -7,6 +7,35 @@ Object {
 }
 `;
 
+exports[`license handlers fetch single license should be able to fetch a single license 1`] = `
+Object {
+  "computerId": "unique-machine-name",
+  "computerName": "paul's laptop",
+  "computerOS": "Windows",
+  "computerUsername": "paul",
+  "email": "example@gmail.com",
+  "expiresAt": "2099-01-01 00:00:00.000 +00:00",
+  "id": "c797c6bc-ef64-4203-9956-a3a90c0c0927",
+  "license": "hi I'm paul",
+  "productId": "simple-product",
+  "url": "http://localhost:3000/license/c797c6bc-ef64-4203-9956-a3a90c0c0927",
+}
+`;
+
+exports[`license handlers fetch single license should be able to fetch a single license 2`] = `
+Object {
+  "licenseCount": 1,
+  "licenseTotal": 5,
+}
+`;
+
+exports[`license handlers fetch single license should return 500 and log an error if critical error ocurrs 1`] = `
+Object {
+  "err": [Error: bad to the bone],
+  "msg": "fetch inidividual license",
+}
+`;
+
 exports[`license handlers fetching licenses should log and reply error if fatal error 1`] = `
 Object {
   "err": [Error: bad to the bone],

@@ -150,8 +150,51 @@ describe('license handlers', () => {
         });
     });
 
-    describe.skip('fetch single license', () => {
-        
+    describe('fetch single license', () => {
+        beforeEach(() => {
+            const { id } = simpleLicense;
+            request.params = { id };
+            return LicenseModel.create(simpleLicense);
+        });
+
+        it('should be able to fetch a single license', async () => {
+            const fetchLicense = createFetchLicense(LicenseModel);
+            await fetchLicense(request, reply);
+            const { meta, license } = reply.mock.calls[0][0];
+
+            delete license.createdAt;
+            delete license.updatedAt;
+
+            expect(reply).toHaveBeenCalled();
+            expect(reply).toHaveBeenCalledTimes(1);
+            expect(license).toMatchSnapshot();
+            expect(meta).toMatchSnapshot();
+        });
+
+        it('should return 404 if the license does not exist', async () => {
+            request.params = { id: '1234' };
+            const fetchLicense = createFetchLicense(LicenseModel);
+            await fetchLicense(request, reply);
+
+            expect(reply).toHaveBeenCalled();
+            expect(reply).toHaveBeenCalledTimes(1);
+            expect(reply).toHaveBeenCalledWith(boom.notFound());
+        });
+
+        it('should return 500 and log an error if critical error ocurrs', async () => {
+            const fetchLicense = createFetchLicense(LicenseModelBad);
+            await fetchLicense(request, reply);
+            const errorLog = request.log.mock.calls[0];
+
+            expect(reply).toHaveBeenCalled();
+            expect(reply).toHaveBeenCalledTimes(1);
+            expect(reply).toHaveBeenCalledWith(boom.badImplementation());
+
+            expect(request.log).toHaveBeenCalled();
+            expect(request.log).toHaveBeenCalledTimes(1);
+            expect(errorLog[0]).toEqual('error');
+            expect(errorLog[1]).toMatchSnapshot();
+        });
     });
 
     describe.skip('update licenses', () => {
