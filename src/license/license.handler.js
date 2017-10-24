@@ -18,7 +18,9 @@ export const createFetchLicenses = LicenseModel => (request, reply) => {
         })
         .then(pipe(
             map(mapUrl),
-            licenses => ({ meta: { licenseCount, licenseTotal }, licenses }),
+            licenses => ({
+                meta: { licenseCount, licenseTotal }, licenses
+            }),
             reply
         ))
         .catch((err) => {
@@ -52,7 +54,13 @@ export const createNewLicense = LicenseModel => (request, reply) => {
         .then(_ => _.get({ plain: true }))
         .then(pipe(
             mapUrl,
-            license => ({ meta: { licenseCount, licenseTotal }, license }),
+            license => ({
+                meta: {
+                    licenseCount: licenseCount + 1,
+                    licenseTotal
+                },
+                license
+            }),
             reply
         ))
         .catch((err) => {
@@ -72,7 +80,11 @@ export const createDeleteLicense = LicenseModel => (request, reply) => {
         .destroy({
             where: { id, email }
         })
-        .then(() => reply({ success: true }))
+        .then(rowsAffected => (
+            rowsAffected ?
+                reply({ success: true }) :
+                reply(boom.badRequest('license does not exist'))
+        ))
         .catch((err) => {
             request.log('error', {
                 err,
@@ -99,7 +111,10 @@ export const createFetchLicense = LicenseModel => (request, reply) => {
         })
         .then(pipe(
             mapUrl,
-            license => ({ meta: { licenseCount, licenseTotal }, license }),
+            license => ({
+                meta: { licenseCount, licenseTotal },
+                license
+            }),
             reply
         ))
         .catch((err) => {

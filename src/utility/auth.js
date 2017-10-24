@@ -1,17 +1,11 @@
-import { where, isEmpty } from 'ramda';
+import { allPass, path } from 'ramda';
 
 export const validateUser = (decoded, request, callback) => {
-    let valid = where({
-        email: !isEmpty,
-        app_metadata: !isEmpty
-    })(decoded);
-
-    if (!valid) return callback(null, false);
-
-    valid = where({
-        licenseCount: !isEmpty,
-        licenseTotal: !isEmpty
-    })(decoded.app_metadata);
+    const valid = allPass([
+        path(['email']),
+        path(['app_metadata', 'licenseCount']),
+        path(['app_metadata', 'licenseTotal'])
+    ])(decoded);
 
     return callback(null, valid);
 };

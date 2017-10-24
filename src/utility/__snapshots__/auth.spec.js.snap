@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`server authentication creating a server strategy should return a auth server strategy 1`] = `
+Object {
+  "cache": true,
+  "jwksRequestsPerMinute": 5,
+  "jwksUri": "test_jwks",
+  "rateLimit": true,
+}
+`;
+
+exports[`server authentication creating a server strategy should return a auth server strategy 2`] = `
+Array [
+  "jwt",
+  "jwt",
+  "required",
+  Object {
+    "complete": true,
+    "key": "test",
+    "validateFunc": [Function],
+    "verifyOptions": Object {
+      "algorithms": Array [
+        "RS256",
+      ],
+      "audience": "verify_audience",
+      "issuer": "options_issue",
+    },
+  },
+]
+`;

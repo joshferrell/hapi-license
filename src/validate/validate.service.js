@@ -5,10 +5,10 @@ const verify = promisify(jwt.verify);
 
 /* eslint-disable import/prefer-default-export */
 
-export const createLicenseValidator = (secret = 'shhh') => (token, computerId) =>
+export const createLicenseValidator = secret => (token, computerId) =>
     verify(token, secret)
-        .then(({ computer }) => (
-            computer.computerId === computerId ?
-                Promise.resolve(null) :
+        .then(decodedToken => (
+            decodedToken.computer.computerId === computerId ?
+                Promise.resolve(decodedToken) :
                 Promise.reject(new Error('computer id does not match license'))
         ));

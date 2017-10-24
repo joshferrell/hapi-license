@@ -19,9 +19,9 @@ export const createValidateLicense = (LicenseModel, validateLicense) => (request
         .catch((err) => {
             switch (err) {
             case 'computer id does not match license':
-                return reply(boom.unauthorized());
+                return reply(boom.unauthorized('computer not assocated with sent license'));
             case 'license does not exist':
-                return reply(boom.unauthorized());
+                return reply(boom.unauthorized('license does not exist or is expired'));
             default:
                 request.log('error', {
                     err,

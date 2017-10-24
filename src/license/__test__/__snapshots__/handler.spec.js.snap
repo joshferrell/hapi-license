@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`license handlers delete license should log and reply 500 if error 1`] = `
+Object {
+  "err": [Error: bad to the bone],
+  "msg": "unable to delete license",
+}
+`;
+
+exports[`license handlers fetching licenses should log and reply error if fatal error 1`] = `
+Object {
+  "err": [Error: bad to the bone],
+  "msg": "unable to fetch licenses",
+}
+`;
+
+exports[`license handlers fetching licenses should return an array of licenses with an id url 1`] = `
+Array [
+  Object {
+    "computerId": "unique-machine-name",
+    "computerName": "paul's laptop",
+    "computerOS": "Windows",
+    "computerUsername": "paul",
+    "email": "example@gmail.com",
+    "expiresAt": "2099-01-01 00:00:00.000 +00:00",
+    "id": "c797c6bc-ef64-4203-9956-a3a90c0c0927",
+    "license": "hi I'm paul",
+    "productId": "simple-product",
+    "url": "http://localhost:3000/license/c797c6bc-ef64-4203-9956-a3a90c0c0927",
+  },
+]
+`;

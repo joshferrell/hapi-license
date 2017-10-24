@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`validation services license validator should reject if the computer id is not in the token 1`] = `[Error: computer id does not match license]`;

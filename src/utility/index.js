@@ -9,3 +9,5 @@ export {
     createLocalPlugins,
     createProductionPlugins
 } from './plugin';
+
+export { default as createStrategy } from './auth';
