@@ -18,7 +18,7 @@
     "lint": "eslint ./src/**/*.js"
   },
   "dependencies": {
-    "boom": "^6.0.0",
+    "boom": "^7.1.1",
     "bunyan": "^1.8.12",
     "common-tags": "^1.4.0",
     "dotenv-safe": "^4.0.4",
