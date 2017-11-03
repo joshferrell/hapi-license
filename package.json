@@ -41,7 +41,7 @@
     "sequelize": "^4.13.11",
     "sqlite": "^2.8.0",
     "tv": "^6.1.0",
-    "vision": "^4.1.1",
+    "vision": "^5.0.0",
     "white-out": "^2.0.0"
   },
   "devDependencies": {
