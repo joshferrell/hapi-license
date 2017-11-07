@@ -52,42 +52,7 @@ The standard is keeping coverage above or at yellow status.
 
 ## Docs
 
-### Fetching Computer information
-
-#### computerId
-
-Computer's unique identifier, you can use the [node-machine-id](https://github.com/automation-stack/node-machine-id) package to generate a unique id
-
-`yarn add node-machine-id`
-
-```
-import { machineId } from 'node-machine-id';
-const computerUsername = machineId() // Returns Promise
-```
-
-#### computerUsername
-User of the account on the machine that is using the package. Useful for license management for users so they can see which machines they can deactivate
-
-```
-import os from 'os';
-const computerUsername = os.userInfo().username;
-```
-
-#### computerOS
-Operating system of the computer. Another useful identifier for the user so that they can identify different computers for license management.
-
-```
-import os from 'os';
-const computerOS = os.type();
-```
-
-#### computerName
-Machine name for the user to know which computer the license is issued for.
-
-```
-import os from 'os';
-const computerName = os.hostname();
-```
+For further documentation, please [read the wiki](https://github.com/joshferrell/hapi-license/wiki) for information on interfacing with the api.
 
 ## TODO
 Create documentation about:
