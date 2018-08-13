@@ -52,7 +52,7 @@
     "babel-preset-stage-3": "^6.24.1",
     "coveralls": "^3.0.0",
     "eslint": "^4.8.0",
-    "eslint-config-airbnb": "^16.0.0",
+    "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jest": "^21.2.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
