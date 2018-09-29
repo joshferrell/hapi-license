@@ -30,7 +30,7 @@
     "hapi-auth-jwt2": "^7.3.0",
     "hapi-swagger": "^8.0.0",
     "inert": "^5.0.1",
-    "joi": "^13.0.1",
+    "joi": "^13.7.0",
     "jsonwebtoken": "^8.1.0",
     "jwks-rsa": "^1.2.1",
     "moment": "^2.19.1",
